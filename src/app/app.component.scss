@@ -1,0 +1,12 @@
+.navbar-nav li{
+  font-weight: 600;
+  font-size: 1.1vw;
+
+  > a {
+    color: #273c75;
+  }
+}
+
+.navbar-nav .nav-link.active {
+  margin-left: 30px;
+}
