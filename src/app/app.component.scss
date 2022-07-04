@@ -1,6 +1,15 @@
+.navbar-brand{
+  font-size: clamp(16px, 3vw, 32px);
+  padding:10px 0px 10px 0px;
+  background-image: linear-gradient(to right,#463f64,#463f64, #e2285c, #e2285c);
+  -webkit-background-clip: text;
+  display: inline-block;
+  -webkit-text-fill-color: #00000000;
+}
+
 .navbar-nav li{
-  font-weight: 600;
-  font-size: 1.1vw;
+  font-weight: 500;
+  font-size: clamp(10px, 1.5vw, 16px);
 
   > a {
     color: #273c75;
