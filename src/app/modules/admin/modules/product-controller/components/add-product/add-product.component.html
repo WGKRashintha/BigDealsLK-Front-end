@@ -1,0 +1,110 @@
+<div class="main-wrap">
+
+  <div class="product">
+    <div class="product-inner">
+
+      <div class="header h1-div" style="width: 75vw">
+        <h1>Product Controller</h1>
+      </div>
+
+      <div class="btn2 h-div" style="width: 11vw">
+        <button type="button" class="btn btn-warning" style="width: 120px" routerLink="/admin/product-controller/add-product">Add product</button>
+      </div>
+
+      <div class="btn2 h-div" style="width: 12vw">
+        <button type="button" class="btn btn-warning" style="width: 140px" routerLink="/admin/product-controller/update-product">Update Product</button>
+      </div>
+
+      <div class="btn2 h-div" style="width: 12vw">
+        <button type="button" class="btn btn-warning" style="width: 140px" routerLink="/admin/product-controller/delete-product">Delete product</button>
+      </div>
+
+      <div class="btn1 h-div" style="width: 12vw">
+        <button type="button" class="btn btn-secondary" style="width: 120px; margin-right: 20px">Logout</button>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="container form-div">
+
+    <h1 style="font-size: clamp(18px, 4.5vw, 32px); font-family: 'Maven Pro', sans-serif; margin-bottom: 5vh; margin-top: 10vh">Add Product</h1>
+
+    <form>
+      <div class="row">
+        <div class="col-12">
+          <mat-form-field appearance="outline" style="width: 100%">
+            <mat-label>Title of the product</mat-label>
+            <input formControlName="name" matInput placeholder="Light blue men's t-shirt">
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12">
+          <mat-form-field appearance="outline" style="width: 100%">
+            <mat-label>Product code</mat-label>
+            <input formControlName="name" matInput placeholder="TS0001">
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12">
+          <mat-form-field appearance="outline" style="width: 100% ;">
+            <mat-label>Description</mat-label>
+            <textarea formControlName="diagnosis" matInput placeholder="Description of the product"></textarea>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12">
+          <mat-form-field appearance="outline" style="width: 100% ;">
+            <mat-label>Colors</mat-label>
+            <input formControlName="email" type="email" matInput placeholder="Blue , Black , Red">
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12">
+          <mat-form-field appearance="outline" style="width: 100% ;">
+            <mat-label>Sizes</mat-label>
+            <input formControlName="address" matInput placeholder="S , M , L">
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12">
+          <mat-form-field appearance="outline" style="width: 100% ;">
+            <mat-label>Product image URL</mat-label>
+            <input formControlName="contact" type="tel" matInput placeholder="https://BigdealsLK.lk/image">
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12">
+          <mat-form-field appearance="outline" style="width: 100% ;">
+            <mat-label>Price</mat-label>
+            <input formControlName="contact" type="tel" matInput placeholder="1890.00">
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12">
+          <button type="button" class="btn btn-danger" style="width: 100%; height: 7vh">Add</button>
+        </div>
+      </div>
+    </form>
+
+  </div>
+
+
+</div>
+
+
+<router-outlet></router-outlet>
