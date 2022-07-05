@@ -6,18 +6,24 @@ import { AdminComponent } from './admin.component';
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import { RegisterAdminComponent } from './components/register-admin/register-admin.component';
+import { UpdateAdminComponent } from './components/update-admin/update-admin.component';
+import { DeleteAdminComponent } from './components/delete-admin/delete-admin.component';
+import {MatButtonModule} from "@angular/material/button";
 
 
 @NgModule({
   declarations: [
     AdminComponent,
-    RegisterAdminComponent
+    RegisterAdminComponent,
+    UpdateAdminComponent,
+    DeleteAdminComponent
   ],
   imports: [
     CommonModule,
     AdminRoutingModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatButtonModule
   ]
 })
 export class AdminModule { }
