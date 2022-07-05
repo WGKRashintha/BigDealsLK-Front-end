@@ -1,0 +1,39 @@
+.delete{
+  width: 100%;
+  height: 20vh;
+  background-color: #f5f5f5;
+  margin-top: 20px;
+}
+
+.delete-inner{
+  display: flex;
+
+  > .h-div{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 20vh;
+  }
+
+  > .h1-div{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    height: 20vh;
+    padding-left: 40px;
+
+    > h1 {
+      font-size: clamp(20px, 5.5vw, 42px);
+      font-family: 'Maven Pro', sans-serif;
+    }
+  }
+
+}
+
+.form-div{
+  margin-top: 6vh;
+  padding-bottom: 10vh;
+  width: 45vw;
+}
