@@ -6,7 +6,8 @@ const routes: Routes = [
   {path:'' , redirectTo:'home' , pathMatch:'full'},
   {path:'home' , component:HomeComponent},
   { path: 'products', loadChildren: () => import('./modules/products/products.module').then(m => m.ProductsModule) },
-  { path: 'admin', loadChildren: () => import('./modules/admin/admin.module').then(m => m.AdminModule) }
+  { path: 'admin', loadChildren: () => import('./modules/admin/admin.module').then(m => m.AdminModule) },
+  { path: 'accounts', loadChildren: () => import('./modules/accounts/accounts.module').then(m => m.AccountsModule) }
 ];
 
 @NgModule({
