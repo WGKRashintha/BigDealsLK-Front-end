@@ -93,10 +93,22 @@
   background-color: rgba(255, 255, 255, 0.72);
   /*border-radius: 25px;*/
 
-  > h2 {
+  > a {
+    text-decoration: none;
+    color: black;
     font-weight: 600;
     font-family: 'Poppins', sans-serif;
     font-size: clamp(16px, 1vw, 35px);
+    margin-top: 0.5vw;
+  }
+
+  > a:hover {
+    font-size: clamp(17px, 1.1vw, 38px);
+    color: #e2285c;
+    -webkit-transition-delay: 2s;
+    transition-delay: 2s;
+    -webkit-transition: all 0.3s ease-in-out 0s;
+    transition: all 0.3s ease-in-out 0s;
   }
 }
 
