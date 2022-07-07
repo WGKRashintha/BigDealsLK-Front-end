@@ -8,8 +8,6 @@ import { SignupComponent } from './components/signup/signup.component';
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import {MatButtonModule} from "@angular/material/button";
-import {ReactiveFormsModule} from "@angular/forms";
-import {HttpClientModule} from "@angular/common/http";
 
 
 @NgModule({
@@ -23,9 +21,7 @@ import {HttpClientModule} from "@angular/common/http";
     AccountsRoutingModule,
     MatFormFieldModule,
     MatInputModule,
-    MatButtonModule,
-    ReactiveFormsModule,
-    HttpClientModule
+    MatButtonModule
   ]
 })
 export class AccountsModule { }
