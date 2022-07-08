@@ -8,6 +8,7 @@ import { HomeComponent } from './componenets/home/home.component';
 import {MatDividerModule} from "@angular/material/divider";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import {MatInputModule} from "@angular/material/input";
     BrowserAnimationsModule,
     MatDividerModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

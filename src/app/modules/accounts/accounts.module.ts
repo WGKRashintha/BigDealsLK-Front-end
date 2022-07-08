@@ -8,6 +8,9 @@ import { SignupComponent } from './components/signup/signup.component';
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import {MatButtonModule} from "@angular/material/button";
+import {ReactiveFormsModule} from "@angular/forms";
+import {HttpClientModule} from "@angular/common/http";
+import {MatSnackBar, MatSnackBarModule} from "@angular/material/snack-bar";
 
 
 @NgModule({
@@ -21,7 +24,10 @@ import {MatButtonModule} from "@angular/material/button";
     AccountsRoutingModule,
     MatFormFieldModule,
     MatInputModule,
-    MatButtonModule
+    MatButtonModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    MatSnackBarModule
   ]
 })
 export class AccountsModule { }
