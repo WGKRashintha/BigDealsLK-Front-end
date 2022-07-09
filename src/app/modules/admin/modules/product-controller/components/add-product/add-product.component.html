@@ -34,12 +34,12 @@
 
     <h1 style="font-size: clamp(18px, 4.5vw, 32px); font-family: 'Maven Pro', sans-serif; margin-bottom: 5vh; margin-top: 10vh">Add Product</h1>
 
-    <form>
+    <form [formGroup]="addProductForm" (ngSubmit)="addProduct()">
       <div class="row">
         <div class="col-12">
           <mat-form-field appearance="outline" style="width: 100%">
             <mat-label>Title of the product</mat-label>
-            <input formControlName="name" matInput placeholder="Light blue men's t-shirt">
+            <input formControlName="title" matInput placeholder="Light blue men's t-shirt">
           </mat-form-field>
         </div>
       </div>
@@ -48,7 +48,7 @@
         <div class="col-12">
           <mat-form-field appearance="outline" style="width: 100%">
             <mat-label>Product code</mat-label>
-            <input formControlName="name" matInput placeholder="TS0001">
+            <input formControlName="productCode" matInput placeholder="TS0001">
           </mat-form-field>
         </div>
       </div>
@@ -57,7 +57,7 @@
         <div class="col-12">
           <mat-form-field appearance="outline" style="width: 100% ;">
             <mat-label>Description</mat-label>
-            <textarea formControlName="diagnosis" matInput placeholder="Description of the product"></textarea>
+            <textarea formControlName="description" matInput placeholder="Description of the product"></textarea>
           </mat-form-field>
         </div>
       </div>
@@ -66,7 +66,7 @@
         <div class="col-12">
           <mat-form-field appearance="outline" style="width: 100% ;">
             <mat-label>Colors</mat-label>
-            <input formControlName="email" type="email" matInput placeholder="Blue , Black , Red">
+            <input  #colors formControlName="colors" matInput placeholder="Blue , Black , Red" (keyup.enter)="addColors(colors.value)">
           </mat-form-field>
         </div>
       </div>
@@ -75,7 +75,7 @@
         <div class="col-12">
           <mat-form-field appearance="outline" style="width: 100% ;">
             <mat-label>Sizes</mat-label>
-            <input formControlName="address" matInput placeholder="S , M , L">
+            <input #sizes formControlName="sizes" matInput placeholder="S , M , L" (keyup.enter)="addSizes(sizes.value)">
           </mat-form-field>
         </div>
       </div>
@@ -84,7 +84,7 @@
         <div class="col-12">
           <mat-form-field appearance="outline" style="width: 100% ;">
             <mat-label>Product image URL</mat-label>
-            <input formControlName="contact" type="tel" matInput placeholder="https://BigdealsLK.lk/image">
+            <input #urls formControlName="urls" matInput placeholder="https://BigdealsLK.lk/image" (keyup.enter)="addUrls(urls.value)">
           </mat-form-field>
         </div>
       </div>
@@ -93,14 +93,14 @@
         <div class="col-12">
           <mat-form-field appearance="outline" style="width: 100% ;">
             <mat-label>Price</mat-label>
-            <input formControlName="contact" type="tel" matInput placeholder="1890.00">
+            <input formControlName="price" matInput placeholder="1890.00">
           </mat-form-field>
         </div>
       </div>
 
       <div class="row">
         <div class="col-12">
-          <button type="button" class="btn btn-danger" style="width: 100%; height: 7vh">Add</button>
+          <button type="submit" class="btn btn-danger" style="width: 100%; height: 7vh">Add</button>
         </div>
       </div>
     </form>

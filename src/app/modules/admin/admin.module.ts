@@ -29,7 +29,8 @@ import {MatSnackBarModule} from "@angular/material/snack-bar";
         MatButtonModule,
         ReactiveFormsModule,
         HttpClientModule,
-        MatSnackBarModule
+        MatSnackBarModule,
+        ReactiveFormsModule
     ]
 })
 export class AdminModule { }
