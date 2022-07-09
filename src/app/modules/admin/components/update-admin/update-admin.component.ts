@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {FormControl, FormGroup} from "@angular/forms";
+import {AdminService} from "../../../../services/admin.service";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
   selector: 'app-update-admin',
@@ -7,9 +10,52 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UpdateAdminComponent implements OnInit {
 
-  constructor() { }
+  updateForm=new FormGroup({
+    name:new FormControl(null),
+    email:new FormControl(null),
+    address:new FormControl(null),
+    contact:new FormControl(null),
+    nic:new FormControl(null)
+  })
+
+  constructor(private adminService:AdminService , private snackBar:MatSnackBar) { }
 
   ngOnInit(): void {
   }
 
+  updateAdmin() {
+    this.adminService.update(
+      this.updateForm.get('name')?.value,
+      this.updateForm.get('email')?.value,
+      this.updateForm.get('dob')?.value,
+      this.updateForm.get('address')?.value,
+      this.updateForm.get('contact')?.value,
+      this.updateForm.get('nic')?.value
+    ).subscribe(response=>{
+      console.log(response);
+      this.snackBar.open('Successfully updated !' , 'Close' , {duration:7500});
+    } , error => {
+      console.log(error);
+      this.snackBar.open('Something went wrong' , 'Close' , {duration:7500});
+    })
+  }
+
+  loadData(fullName: string) {
+    this.adminService.getAdmin(fullName).subscribe(response=>{
+      console.log(response);
+      this.updateForm.patchValue({
+        fullName:response.message.fullName,
+        email:response.message.email,
+        dob:response.message.dob,
+        address:response.message.address,
+        contact:response.message.contact,
+        nic:response.message.nic
+      })
+    } , error => {
+      console.log(error);
+      if(error.status==404){
+        this.snackBar.open('Admin Not Found' , 'Close' , {duration:3500});
+      }
+    })
+  }
 }

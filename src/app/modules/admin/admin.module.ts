@@ -9,6 +9,9 @@ import { RegisterAdminComponent } from './components/register-admin/register-adm
 import { UpdateAdminComponent } from './components/update-admin/update-admin.component';
 import { DeleteAdminComponent } from './components/delete-admin/delete-admin.component';
 import {MatButtonModule} from "@angular/material/button";
+import {ReactiveFormsModule} from "@angular/forms";
+import {HttpClientModule} from "@angular/common/http";
+import {MatSnackBarModule} from "@angular/material/snack-bar";
 
 
 @NgModule({
@@ -18,12 +21,15 @@ import {MatButtonModule} from "@angular/material/button";
     UpdateAdminComponent,
     DeleteAdminComponent
   ],
-  imports: [
-    CommonModule,
-    AdminRoutingModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatButtonModule
-  ]
+    imports: [
+        CommonModule,
+        AdminRoutingModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatButtonModule,
+        ReactiveFormsModule,
+        HttpClientModule,
+        MatSnackBarModule
+    ]
 })
 export class AdminModule { }

@@ -32,12 +32,12 @@
       <div class="col-12">
         <mat-form-field appearance="standard" style="width: 100%; margin-bottom: 30px; margin-top: 15px">
           <mat-label>Search Here</mat-label>
-          <input #name matInput placeholder="Jagath Perera">
+          <input #name matInput placeholder="Jagath Perera" (keyup.enter)="loadData(name.value)">
         </mat-form-field>
       </div>
     </div>
 
-    <form>
+    <form [formGroup]="updateForm" (ngSubmit)="updateAdmin()">
       <div class="row">
         <div class="col-12">
           <mat-form-field appearance="outline" style="width: 100%">
@@ -78,14 +78,14 @@
         <div class="col-12">
           <mat-form-field appearance="outline" style="width: 100% ;">
             <mat-label>NIC</mat-label>
-            <input formControlName="contact" type="tel" matInput placeholder="20002340059v">
+            <input formControlName="nic" matInput placeholder="20002340059v">
           </mat-form-field>
         </div>
       </div>
 
       <div class="row">
         <div class="col-12">
-          <button type="button" class="btn btn-danger" style="width: 100%; height: 7vh">Update</button>
+          <button type="submit" class="btn btn-danger" style="width: 100%; height: 7vh">Update</button>
         </div>
       </div>
     </form>

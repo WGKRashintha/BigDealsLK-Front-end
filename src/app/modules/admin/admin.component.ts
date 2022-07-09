@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {AdminService} from "../../services/admin.service";
+import {Router} from "@angular/router";
+import {MatSnackBar} from "@angular/material/snack-bar";
+import {TokenService} from "../../services/token.service";
 
 @Component({
   selector: 'app-admin',
@@ -7,9 +12,28 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminComponent implements OnInit {
 
-  constructor() { }
+  loginForm=new FormGroup({
+    userName:new FormControl(null , [Validators.required]),
+    password:new FormControl(null , [Validators.required])
+  })
+
+  constructor(private adminService:AdminService , private tokenService:TokenService , private router:Router , private snackBar:MatSnackBar) { }
 
   ngOnInit(): void {
   }
 
+  login() {
+    this.adminService.login(
+      this.loginForm.get('userName')?.value,
+      this.loginForm.get('password')?.value
+    ).subscribe(response=>{
+      console.log(response);
+      this.tokenService.createToken(response.token);
+
+      this.router.navigate(['/admin/admin-register']).then(responseData=>{
+        console.log(response.token)
+        this.snackBar.open(response.message , 'Close' , {duration:3500});
+      });
+    })
+  }
 }

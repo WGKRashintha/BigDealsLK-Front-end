@@ -54,7 +54,8 @@ export class SignupComponent implements OnInit {
           this.snackBar.open('Registration is succeeded' , 'Close' , {duration:7500});
         });
       } , error=>{
-        console.log(error)
+        console.log(error);
+        this.snackBar.open('Something went wrong' , 'Close' , {duration:7500});
       })
     }else{
       this.snackBar.open('Passwords should be same' , 'Close' , {duration:7500});

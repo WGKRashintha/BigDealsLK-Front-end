@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {FormControl, FormGroup} from "@angular/forms";
+import {AdminService} from "../../../../services/admin.service";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
   selector: 'app-delete-admin',
@@ -7,9 +10,41 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DeleteAdminComponent implements OnInit {
 
-  constructor() { }
+  deleteForm=new FormGroup({
+    email:new FormControl(null),
+    dob:new FormControl(null),
+    address:new FormControl(null),
+    contact:new FormControl(null),
+    nic:new FormControl(null)
+  })
+
+  constructor(private adminService:AdminService , private snackBar:MatSnackBar) { }
 
   ngOnInit(): void {
   }
 
+  getAdmin(fullName:string) {
+    this.adminService.getAdmin(fullName).subscribe(response=>{
+      console.log(response);
+      this.deleteForm.patchValue({
+        email:response.message.email,
+        dob:response.message.dob,
+        address:response.message.address,
+        contact:response.message.contact,
+        nic:response.message.nic
+      })
+    }, error => {
+      console.log(error);
+      if(error.status==404){
+        this.snackBar.open('Admin Not Found' , 'Close' , {duration:3500});
+      }
+    })
+  }
+
+  delete(fullName:string) {
+    this.adminService.delete(fullName).subscribe(response=>{
+      console.log(response);
+      this.snackBar.open('Successfully deleted !' , 'Close' , {duration:7500});
+    })
+  }
 }
