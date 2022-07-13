@@ -14,7 +14,7 @@ import {Router} from "@angular/router";
 export class LoginComponent implements OnInit {
 
   loginForm=new FormGroup({
-    userName:new FormControl(null , [Validators.required]),
+    email:new FormControl(null , [Validators.required]),
     password:new FormControl(null , [Validators.required])
   })
 
@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
 
   login() {
     this.userService.login(
-      this.loginForm.get('userName')?.value,
+      this.loginForm.get('email')?.value,
       this.loginForm.get('password')?.value
     ).subscribe(response=>{
       console.log(response);

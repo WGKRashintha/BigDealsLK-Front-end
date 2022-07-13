@@ -11,7 +11,7 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 export class UpdateAdminComponent implements OnInit {
 
   updateForm=new FormGroup({
-    name:new FormControl(null),
+    fullName:new FormControl(null),
     email:new FormControl(null),
     address:new FormControl(null),
     contact:new FormControl(null),
@@ -25,7 +25,7 @@ export class UpdateAdminComponent implements OnInit {
 
   updateAdmin() {
     this.adminService.update(
-      this.updateForm.get('name')?.value,
+      this.updateForm.get('fullName')?.value,
       this.updateForm.get('email')?.value,
       this.updateForm.get('dob')?.value,
       this.updateForm.get('address')?.value,
@@ -40,8 +40,8 @@ export class UpdateAdminComponent implements OnInit {
     })
   }
 
-  loadData(fullName: string) {
-    this.adminService.getAdmin(fullName).subscribe(response=>{
+  loadData(email: string) {
+    this.adminService.getAdmin(email).subscribe(response=>{
       console.log(response);
       this.updateForm.patchValue({
         fullName:response.message.fullName,

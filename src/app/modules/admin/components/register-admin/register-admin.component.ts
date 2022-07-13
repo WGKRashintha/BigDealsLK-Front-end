@@ -30,17 +30,14 @@ export class RegisterAdminComponent implements OnInit {
     this.adminService.register(
       this.registerForm.get('fullName')?.value,
       this.registerForm.get('email')?.value,
+      this.registerForm.get('password')?.value,
       this.registerForm.get('dob')?.value,
       this.registerForm.get('address')?.value,
       this.registerForm.get('contact')?.value,
       this.registerForm.get('nic')?.value
     ).subscribe(response=>{
       console.log(response);
-
-      this.router.navigate(['/admin']).then(responseData=>{
-        console.log(responseData)
-        this.snackBar.open('Registration is succeeded' , 'Close' , {duration:7500});
-      });
+      this.snackBar.open('Registration is succeeded' , 'Close' , {duration:7500});
     } , error => {
       console.log(error);
       this.snackBar.open('Something went wrong' , 'Close' , {duration:7500});

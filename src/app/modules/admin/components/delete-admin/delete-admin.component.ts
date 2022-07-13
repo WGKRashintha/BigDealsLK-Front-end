@@ -11,6 +11,7 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 export class DeleteAdminComponent implements OnInit {
 
   deleteForm=new FormGroup({
+    fullName:new FormControl(null),
     email:new FormControl(null),
     dob:new FormControl(null),
     address:new FormControl(null),
@@ -23,11 +24,11 @@ export class DeleteAdminComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  getAdmin(fullName:string) {
-    this.adminService.getAdmin(fullName).subscribe(response=>{
+  getAdmin(email:string) {
+    this.adminService.getAdmin(email).subscribe(response=>{
       console.log(response);
       this.deleteForm.patchValue({
-        email:response.message.email,
+        fullName:response.message.fullName,
         dob:response.message.dob,
         address:response.message.address,
         contact:response.message.contact,
@@ -41,8 +42,8 @@ export class DeleteAdminComponent implements OnInit {
     })
   }
 
-  delete(fullName:string) {
-    this.adminService.delete(fullName).subscribe(response=>{
+  delete(email:string) {
+    this.adminService.delete(email).subscribe(response=>{
       console.log(response);
       this.snackBar.open('Successfully deleted !' , 'Close' , {duration:7500});
     })

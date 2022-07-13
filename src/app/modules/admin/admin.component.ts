@@ -13,7 +13,7 @@ import {TokenService} from "../../services/token.service";
 export class AdminComponent implements OnInit {
 
   loginForm=new FormGroup({
-    userName:new FormControl(null , [Validators.required]),
+    email:new FormControl(null , [Validators.required]),
     password:new FormControl(null , [Validators.required])
   })
 
@@ -24,16 +24,20 @@ export class AdminComponent implements OnInit {
 
   login() {
     this.adminService.login(
-      this.loginForm.get('userName')?.value,
+      this.loginForm.get('email')?.value,
       this.loginForm.get('password')?.value
     ).subscribe(response=>{
       console.log(response);
       this.tokenService.createToken(response.token);
+      this.snackBar.open(response.message , 'Close' , {duration:3500});
 
-      this.router.navigate(['/admin/admin-register']).then(responseData=>{
+      this.router.navigate(['admin/register-admin']).then(responseData=>{
         console.log(response.token)
         this.snackBar.open(response.message , 'Close' , {duration:3500});
       });
+    }, error => {
+      console.log(error);
+      this.snackBar.open('Invalid' , 'Close' , {duration:5000});
     })
   }
 }

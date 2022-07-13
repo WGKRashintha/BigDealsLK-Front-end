@@ -19,21 +19,24 @@ export class ProductService {
       description:description,
       colors:colors,
       sizes:sizes,
-      url:urls,
+      urls:urls,
       price:price
     })
   }
 
   get(productCode:string):Observable<any>{
-    return this.http.get(this.baseUrl + 'product/get' , {headers : {productCode:productCode}});
+    return this.http.post(this.baseUrl + 'product/get' , {
+      productCode:productCode
+    });
   }
 
   getAll():Observable<any>{
     return this.http.get(this.baseUrl + 'product/getAll');
   }
 
-  update(title: string, description: string, colors: string[] | undefined, sizes: string[] | undefined, urls: string[] | undefined, price: string):Observable<any>{
+  update(productCode:string , title: string, description: string, colors: string[] | undefined, sizes: string[] | undefined, urls: string[] | undefined, price: string):Observable<any>{
     return this.http.put(this.baseUrl + 'product/update' , {
+      productCode:productCode,
       title:title,
       description:description,
       colors:colors,

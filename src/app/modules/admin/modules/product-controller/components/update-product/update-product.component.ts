@@ -10,11 +10,11 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 })
 export class UpdateProductComponent implements OnInit {
 
-  colorsArray: string[] | undefined
+  colorsArray: string[] =[]
 
-  urlsArray: string[] | undefined
+  urlsArray: string[] =[]
 
-  sizesArray: string[] | undefined
+  sizesArray: string[] =[]
 
   updateProductForm=new FormGroup({
     title:new FormControl(null),
@@ -37,14 +37,11 @@ export class UpdateProductComponent implements OnInit {
       this.updateProductForm.patchValue({
         title:response.message.title,
         description:response.message.description,
-        color:response.message.color,
+        colors:response.message.colors,
         sizes:response.message.sizes,
         urls:response.message.urls,
         price:response.message.price
       })
-      this.colorsArray=response.message.color;
-      this.sizesArray=response.message.sizes;
-      this.urlsArray=response.message.urls;
     } , error => {
       console.log(error);
       if(error.status==404){
@@ -54,7 +51,7 @@ export class UpdateProductComponent implements OnInit {
   }
 
   addColors(color: string) {
-    this.colorsArray?.push(color);
+    this.colorsArray.push(color);
   }
 
   addUrls(url: string) {
@@ -65,8 +62,9 @@ export class UpdateProductComponent implements OnInit {
     this.sizesArray?.push(size);
   }
 
-  update() {
+  update(productCode:string) {
     this.productService.update(
+      productCode,
       this.updateProductForm.get('title')?.value,
       this.updateProductForm.get('description')?.value,
       this.colorsArray,

@@ -12,9 +12,9 @@ export class UserService {
 
   constructor(private http:HttpClient) { }
 
-  login(userName:String , password:String):Observable<any>{
+  login(email:String , password:String):Observable<any>{
     return this.http.post(this.baseUrl + 'user/login' , {
-      userName:userName,
+      email:email,
       password:password
     })
   }

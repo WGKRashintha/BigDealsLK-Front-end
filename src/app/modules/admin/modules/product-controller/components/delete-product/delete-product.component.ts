@@ -56,7 +56,7 @@ export class DeleteProductComponent implements OnInit {
   delete(productCode: string){
     this.productService.delete(productCode).subscribe(response=>{
       console.log(response);
-      this.snackBar.open('Successfully deletes !' , 'Close' , {duration:7500});
+      this.snackBar.open('Successfully deleted !' , 'Close' , {duration:7500});
     }, error => {
       console.log(error);
       this.snackBar.open('Something went wrong !' , 'Close' , {duration:7500});

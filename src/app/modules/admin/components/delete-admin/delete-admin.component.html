@@ -28,28 +28,29 @@
 
   <div class="container form-div">
 
-    <div class="container">
-      <div class="row" style="margin-bottom: 25px">
-        <div class="col-8">
-          <mat-form-field appearance="outline" style="width: 100%">
-            <mat-label>Name of the admin</mat-label>
-            <input #name matInput placeholder="Jagath Perera" (keyup.enter)="getAdmin(name.value)">
-          </mat-form-field>
-        </div>
+    <form [formGroup]="deleteForm" (ngSubmit)="delete(email.value)">
 
-        <div class="col-4">
-          <button type="button" class="btn btn-outline-danger" style="width: 100% ; height: 52px ; margin-top: 3px" (click)="getAdmin(name.value)">Search Here</button>
+      <div class="container">
+        <div class="row" style="margin-bottom: 25px">
+          <div class="col-8">
+            <mat-form-field appearance="outline" style="width: 100%">
+              <mat-label>Email of the admin</mat-label>
+              <input #email matInput placeholder="jagathperera@gmail.com">
+            </mat-form-field>
+          </div>
+
+          <div class="col-4">
+            <button type="button" class="btn btn-outline-danger" style="width: 100% ; height: 52px ; margin-top: 3px" (click)="getAdmin(email.value)">Search Here</button>
+          </div>
         </div>
       </div>
-    </div>
 
-    <form [formGroup]="deleteForm" (ngSubmit)="delete(name.value)">
       <div class="container">
         <div class="row">
           <div class="col-12">
             <mat-form-field appearance="outline" style="width: 100%">
-              <mat-label>Email</mat-label>
-              <input formControlName="email" matInput placeholder="Jagath Perera">
+              <mat-label>Name</mat-label>
+              <input formControlName="fullName" matInput placeholder="Jagath Perera">
             </mat-form-field>
           </div>
         </div>

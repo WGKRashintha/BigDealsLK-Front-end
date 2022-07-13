@@ -12,10 +12,11 @@ export class AdminService {
 
   constructor(private http:HttpClient) { }
 
-  register(fullName:string , email:string , dob:string , address:string , contact:string , nic:string):Observable<any>{
+  register(fullName:string , email:string , password:string , dob:string , address:string , contact:string , nic:string):Observable<any>{
     return this.http.post(this.baseUrl + 'admin/register' , {
       fullName:fullName,
       email:email,
+      password:password,
       dob:dob,
       address:address,
       contact:contact,
@@ -34,17 +35,17 @@ export class AdminService {
     })
   }
 
-  getAdmin(fullName:string):Observable<any>{
-    return this.http.get(this.baseUrl + 'admin/get' , {headers : {fullName:fullName}})
+  getAdmin(email:string):Observable<any>{
+    return this.http.get(this.baseUrl + 'admin/get' , {headers : {email:email}})
   }
 
-  delete(fullName:string):Observable<any>{
-    return this.http.delete(this.baseUrl + 'admin/delete' , {body:{fullName:fullName}})
+  delete(email:string):Observable<any>{
+    return this.http.delete(this.baseUrl + 'admin/delete' , {headers:{email:email}})
   }
 
-  login(userName:string , password:string):Observable<any>{
+  login(email:string , password:string):Observable<any>{
     return this.http.post(this.baseUrl + 'admin/login' , {
-      fullName:userName,
+      email:email,
       password:password
     })
   }

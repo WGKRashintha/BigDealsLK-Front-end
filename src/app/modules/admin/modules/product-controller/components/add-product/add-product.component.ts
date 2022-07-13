@@ -10,15 +10,15 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 })
 export class AddProductComponent implements OnInit {
 
-  colorsArray: string[] | undefined
+  colorsArray: string[] = [];
 
-  urlsArray: string[] | undefined
+  urlsArray: string[] =[];
 
-  sizesArray: string[] | undefined
+  sizesArray: string[] =[];
 
   addProductForm=new FormGroup({
     title:new FormControl(null , [Validators.required]),
-    productCode:new FormControl(null , [Validators.required]),
+    code:new FormControl(null , [Validators.required]),
     description:new FormControl(null , [Validators.required]),
     colors:new FormControl(null),
     sizes:new FormControl(null),
@@ -31,22 +31,27 @@ export class AddProductComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  addColors(color: string) {
+  addColors(color: any) {
     this.colorsArray?.push(color);
+    this.addProductForm.get('colors')?.reset();
   }
 
   addUrls(url: string) {
+    console.log(url);
     this.urlsArray?.push(url);
+    this.urlsArray.values();
+    this.addProductForm.get('urls')?.reset();
   }
 
   addSizes(size: string) {
     this.sizesArray?.push(size);
+    this.addProductForm.get('sizes')?.reset();
   }
 
   addProduct() {
     this.productService.add(
       this.addProductForm.get('title')?.value,
-      this.addProductForm.get('productCode')?.value,
+      this.addProductForm.get('code')?.value,
       this.addProductForm.get('description')?.value,
       this.colorsArray,
       this.sizesArray,
