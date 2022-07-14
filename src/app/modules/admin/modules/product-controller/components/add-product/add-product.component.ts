@@ -18,7 +18,8 @@ export class AddProductComponent implements OnInit {
 
   addProductForm=new FormGroup({
     title:new FormControl(null , [Validators.required]),
-    code:new FormControl(null , [Validators.required]),
+    productCode:new FormControl(null , [Validators.required]),
+    category:new FormControl(null , [Validators.required]),
     description:new FormControl(null , [Validators.required]),
     colors:new FormControl(null),
     sizes:new FormControl(null),
@@ -51,7 +52,8 @@ export class AddProductComponent implements OnInit {
   addProduct() {
     this.productService.add(
       this.addProductForm.get('title')?.value,
-      this.addProductForm.get('code')?.value,
+      this.addProductForm.get('productCode')?.value,
+      this.addProductForm.get('category')?.value,
       this.addProductForm.get('description')?.value,
       this.colorsArray,
       this.sizesArray,
@@ -60,6 +62,9 @@ export class AddProductComponent implements OnInit {
     ).subscribe(response=>{
       console.log(response);
       this.snackBar.open('Successfully added' , 'Close' , {duration:7500});
+      this.urlsArray=[];
+      this.colorsArray=[];
+      this.sizesArray=[];
     }, error => {
       console.log(error);
       this.snackBar.open('Something went wrong !' , 'Close' , {duration:7500});

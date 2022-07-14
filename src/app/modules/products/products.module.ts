@@ -7,6 +7,7 @@ import { MensComponent } from './components/mens/mens.component';
 import { WomensComponent } from './components/womens/womens.component';
 import { BagsComponent } from './components/bags/bags.component';
 import { GlassesComponent } from './components/glasses/glasses.component';
+import { ProductDetailsComponent } from './components/product-details/product-details.component';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { GlassesComponent } from './components/glasses/glasses.component';
     MensComponent,
     WomensComponent,
     BagsComponent,
-    GlassesComponent
+    GlassesComponent,
+    ProductDetailsComponent
   ],
   imports: [
     CommonModule,

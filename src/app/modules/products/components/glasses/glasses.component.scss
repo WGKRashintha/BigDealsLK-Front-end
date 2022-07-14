@@ -60,6 +60,21 @@
   width: 25vw;
   height: 25vw;
   border: 1px solid red;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  > .image {
+    width: 25vw;
+    height: 20vw;
+    border: 1px solid green;
+  }
+
+  > .title{
+    width: 25vw;
+    height: 5vw;
+    border: 1px solid violet;
+  }
 }
 
 .footer{

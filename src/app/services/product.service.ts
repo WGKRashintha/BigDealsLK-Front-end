@@ -12,10 +12,11 @@ export class ProductService {
 
   constructor(private http:HttpClient) { }
 
-  add(title: string, productCode: string, description: string, colors: string[] | undefined, sizes: string[] | undefined, urls: string[] | undefined, price: string):Observable<any>{
+  add(title: string, productCode: string, category:string , description: string, colors: string[] | undefined, sizes: string[] | undefined, urls: string[] | undefined, price: string):Observable<any>{
     return this.http.post(this.baseUrl + 'product/add' , {
       title:title,
       productCode:productCode,
+      category:category,
       description:description,
       colors:colors,
       sizes:sizes,
