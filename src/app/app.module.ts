@@ -8,7 +8,8 @@ import { HomeComponent } from './componenets/home/home.component';
 import {MatDividerModule} from "@angular/material/divider";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
-import {HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
+import {HttpManagerInterceptor} from "./interceptors/http-manager.interceptor";
 
 @NgModule({
   declarations: [
@@ -24,7 +25,9 @@ import {HttpClientModule} from "@angular/common/http";
     MatInputModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    {provide:HTTP_INTERCEPTORS , useClass:HttpManagerInterceptor , multi:true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

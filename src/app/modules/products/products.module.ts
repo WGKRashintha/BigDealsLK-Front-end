@@ -8,6 +8,8 @@ import { WomensComponent } from './components/womens/womens.component';
 import { BagsComponent } from './components/bags/bags.component';
 import { GlassesComponent } from './components/glasses/glasses.component';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
+import {FormsModule} from "@angular/forms";
+import {MatButtonModule} from "@angular/material/button";
 
 
 @NgModule({
@@ -21,7 +23,9 @@ import { ProductDetailsComponent } from './components/product-details/product-de
   ],
   imports: [
     CommonModule,
-    ProductsRoutingModule
+    ProductsRoutingModule,
+    FormsModule,
+    MatButtonModule
   ]
 })
 export class ProductsModule { }

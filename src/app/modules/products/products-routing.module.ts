@@ -5,13 +5,15 @@ import {MensComponent} from "./components/mens/mens.component";
 import {WomensComponent} from "./components/womens/womens.component";
 import {BagsComponent} from "./components/bags/bags.component";
 import {GlassesComponent} from "./components/glasses/glasses.component";
+import {ProductDetailsComponent} from "./components/product-details/product-details.component";
 
 const routes: Routes = [
   { path: '', redirectTo:'mens-products' , pathMatch:'full' },
   {path:'mens-products' , component:MensComponent},
   {path:'womens-products' , component:WomensComponent},
   {path:'bag-products' , component:BagsComponent},
-  {path:'sunglass-products' , component:GlassesComponent}
+  {path:'sunglass-products' , component:GlassesComponent},
+  {path:'product-details/:productCode' , component:ProductDetailsComponent}
 ];
 
 @NgModule({
