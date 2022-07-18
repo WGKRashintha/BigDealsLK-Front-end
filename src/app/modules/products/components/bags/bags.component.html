@@ -24,12 +24,12 @@
       <div class="product-inner">
         <div class="container">
           <div class="row">
-            <div class="product-item col-12 col-md-6" *ngFor="let tempImage of bagProducts">
+            <div class="product-item col-12 col-md-6" *ngFor="let tempImage of bagProducts" style="margin: 2vh 0vh">
               <div class="image">
                 <img src="{{tempImage.urls}}" alt="" width="100%" height="100%" style="object-fit: contain; overflow: hidden">
               </div>
               <div class="title" style="display: flex; justify-content: center; align-items: center">
-                <a routerLink="#" style="font-size: clamp(16px, 1.2vw, 28px); text-decoration: none"> {{tempImage.title}} </a>
+                <a routerLink="#" style="font-size: clamp(16px, 1.2vw, 28px); text-decoration: none; color: #1d4c7e;"> {{tempImage.title}} </a>
               </div>
             </div>
           </div>
