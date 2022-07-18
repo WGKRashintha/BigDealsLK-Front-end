@@ -9,13 +9,32 @@
   <div class="products">
 
     <div class="productData">
-      <div class="product" *ngFor="let tempProduct of products">
-        <div class="title" *ngFor="let tempTitle of title"> {{tempTitle}} </div>
+      <div class="products-inner">
+        <div style="height: 8vh; width: 35%">
+          <div class="data" style="border: 1px solid #808080; border-right:0px; height: 8vh" *ngFor="let tempUrl of urls"><img src="{{tempUrl}}" alt="" width="50px" height="50px" style="object-fit: contain; object-position: center"> </div>
+        </div>
+        <div style="height: 8vh; width: 125%">
+          <div class="data" style="border: 1px solid #808080; border-left:0px; border-right:0px; height: 8vh; padding-top: 10px" *ngFor="let tempTitle of titles"> <p style="font-family: 'Roboto', sans-serif; font-weight: 500; font-size: 1rem;"> {{tempTitle}} </p> </div>
+        </div>
+        <div style="height: 8vh; width: 70%">
+          <div class="data" style="border: 1px solid #808080; border-left:0px; border-right:0px; height: 8vh; padding-top: 10px" *ngFor="let tempColor of colors"> <p style="font-size: 0.9rem;"> {{tempColor}} </p> </div>
+        </div>
+        <div style="height: 8vh; width: 50%">
+          <div class="data" style="border: 1px solid #808080; border-left:0px; height: 8vh; padding-top: 10px" *ngFor="let tempSize of sizes"> <p style="font-size: 0.9rem;"> {{tempSize}} </p> </div>
+        </div>
       </div>
     </div>
 
     <div class="checkout">
+      <div class="price" style="display: flex; justify-content: center; align-items: center; width: 30vw; height: 10vh;">
+        <h2 style="margin-top:1.7vh; font-size: clamp(16px, 3vw, 32px); color: #fc861e"> Total - Rs.{{price}} </h2>
+      </div>
 
+      <div class="button">
+        <div class="checkout-btn" style=" display: flex; justify-content: center; align-items: center; width: 13vw; height: 7.5vh; border-radius: 7px; background-color: #463f64">
+          <a style="color: white; font-size: clamp(12px, 1.2vw, 22px); text-decoration: none" routerLink="/cart/checkout-page" (click)="checkout()">Checkout</a>
+        </div>
+      </div>
     </div>
   </div>
 

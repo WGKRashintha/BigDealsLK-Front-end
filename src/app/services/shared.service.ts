@@ -1,58 +1,67 @@
 import { Injectable } from '@angular/core';
 import {ProductService} from "./product.service";
 import {Observable} from "rxjs";
+import {HttpClient} from "@angular/common/http";
+import {environment} from "../../environments/environment";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Injectable({
   providedIn: 'root'
 })
 export class SharedService {
 
+  private baseUrl=environment.baseUrl;
+
   color:string ='';
   size:string ='';
   title:string='';
-  image:string='';
+  url:string='';
+  price:number=0;
   productCode:string='';
-  dataArray: string[]=[];
-  products: string[]=[];
 
-  constructor(private productService:ProductService) { }
+  email:string='';
+
+  constructor(private productService:ProductService , private http:HttpClient , /*private snackBar:MatSnackBar*/) { }
 
 
 
-  setProductData(color:string , size:string , productCode:string){
+  setProductData(title:string , color:string , size:string , url:string , price:number){
+    this.title=title;
     this.color=color;
     this.size=size;
-    this.productCode=productCode;
-  }
+    this.url=url;
+    this.price=price
 
-  getProductData(){
-    return new Array(this.color , this.size , this.productCode) ;
-  }
+    this.email=<string>localStorage.getItem('email');
 
-  addItems(){
-    this.dataArray=this.getProductData();
-    console.log(this.dataArray);
-    console.log(this.getTitle(this.dataArray[2]));
-
-  }
-
-  getTitle(productCode:string){
-    this.productService.get(productCode).subscribe(response=>{
-      this.title=response.message.title;
-      console.log(this.title);
+    this.add(this.email , this.title , this.color , this.size , this.url , this.price).subscribe(response=>{
+      console.log(response);
+      /*this.snackBar.open('Added to the Card' , 'Close' , {duration:5000});*/
     } , error => {
+      console.log(this.email)
       console.log(error);
     })
-    return this.title;
   }
 
-  getImage(productCode:string){
-    this.productService.get(productCode).subscribe(response=>{
-      this.image=response.message.urls[0];
-      console.log(this.image)
-    } , error => {
-      console.log(error);
+  add(email:string , title:string , color:string , size:string , url:string , price:number):Observable<any>{
+    return this.http.post(this.baseUrl + 'cart/add' , {
+      email:email,
+      title:title,
+      price:price,
+      color:color,
+      size:size,
+      url:url
     })
-    return this.image;
+  }
+
+  get(email:string):Observable<any>{
+    return this.http.get(this.baseUrl + 'cart/get', {headers:{email:email}})
+  }
+
+  delete(url:string):Observable<any>{
+    return this.http.delete(this.baseUrl + 'cart/delete' , {headers:{url:url}})
+  }
+  deleteAll(email:string):Observable<any>{
+    return this.http.delete(this.baseUrl + 'cart/deleteAll' , {headers:{email:email}})
   }
 }

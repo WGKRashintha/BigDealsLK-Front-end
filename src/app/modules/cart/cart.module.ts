@@ -3,11 +3,13 @@ import { CommonModule } from '@angular/common';
 
 import { CartRoutingModule } from './cart-routing.module';
 import { CartComponent } from './cart.component';
+import { CheckoutComponent } from './component/checkout/checkout.component';
 
 
 @NgModule({
   declarations: [
-    CartComponent
+    CartComponent,
+    CheckoutComponent,
   ],
   imports: [
     CommonModule,

@@ -32,7 +32,8 @@ export class LoginComponent implements OnInit {
       this.tokenService.createToken(response.token);
 
       this.router.navigate(['/home']).then(responseData=>{
-        console.log(response.token)
+        console.log(response.token);
+        localStorage.setItem('email' , this.loginForm.get('email')?.value);
         this.snackBar.open(response.message , 'Close' , {duration:3500});
       });
     }, error => {

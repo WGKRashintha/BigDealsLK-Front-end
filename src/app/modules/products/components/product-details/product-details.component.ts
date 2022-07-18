@@ -18,10 +18,11 @@ export class ProductDetailsComponent implements OnInit {
   description: string='';
   colors: string[]=[];
   sizes: string[]=[];
-  price:string='';
+  price:number=0;
 
   chosenColor: string='';
   chosenSize:string='';
+  chosenUrl:string='';
 
   constructor(private productService:ProductService , private activatedRoute:ActivatedRoute , private shared:SharedService , private router:Router) { }
 
@@ -43,7 +44,9 @@ export class ProductDetailsComponent implements OnInit {
       this.description=response.message.description;
       this.colors=response.message.colors;
       this.sizes=response.message.sizes;
-      this.price=response.message.price;
+      this.price=<number>response.message.price;
+
+      this.chosenUrl=this.urls[0];
     } , error => {
       console.log(error);
     })
@@ -60,7 +63,7 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   addToCart() {
-    this.shared.setProductData(this.chosenColor , this.chosenSize , this.productCode);
+    this.shared.setProductData(this.title , this.chosenColor , this.chosenSize , this.chosenUrl , this.price);
     this.router.navigate(['/cart']);
   }
 }

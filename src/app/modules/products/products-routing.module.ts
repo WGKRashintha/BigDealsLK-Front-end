@@ -6,6 +6,7 @@ import {WomensComponent} from "./components/womens/womens.component";
 import {BagsComponent} from "./components/bags/bags.component";
 import {GlassesComponent} from "./components/glasses/glasses.component";
 import {ProductDetailsComponent} from "./components/product-details/product-details.component";
+import {UserLoginGuardGuard} from "../../guards/user-login-guard.guard";
 
 const routes: Routes = [
   { path: '', redirectTo:'mens-products' , pathMatch:'full' },
@@ -13,7 +14,7 @@ const routes: Routes = [
   {path:'womens-products' , component:WomensComponent},
   {path:'bag-products' , component:BagsComponent},
   {path:'sunglass-products' , component:GlassesComponent},
-  {path:'product-details/:productCode' , component:ProductDetailsComponent}
+  {path:'product-details/:productCode', component:ProductDetailsComponent}
 ];
 
 @NgModule({

@@ -10,6 +10,7 @@ import { GlassesComponent } from './components/glasses/glasses.component';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
 import {FormsModule} from "@angular/forms";
 import {MatButtonModule} from "@angular/material/button";
+import {HttpClientModule} from "@angular/common/http";
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import {MatButtonModule} from "@angular/material/button";
     CommonModule,
     ProductsRoutingModule,
     FormsModule,
-    MatButtonModule
+    MatButtonModule,
+    HttpClientModule
   ]
 })
 export class ProductsModule { }

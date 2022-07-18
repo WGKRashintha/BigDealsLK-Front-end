@@ -1,60 +1,24 @@
-.header{
-  width: 100%;
-  height: 25vh;
-  background-color: #f5f5f5;
+*{
+  padding: 0;
+  margin: 0;
+}
+
+.main-content{
+  width: 95vw;
+  height: 70vh;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-}
 
-.header-inner{
-
-  > h1 {
-    font-size: clamp(26px, 7vw, 48px);
-    font-family: 'Maven Pro', sans-serif;
-  }
-}
-
-.products{
-  display: flex;
-  width: 100%;
-  min-height: 70vh;
-  height: auto;
-
-  > .productData{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 220vw;
-    min-height: 70vh;
-    height: auto;
-
-    > .products-inner{
-      display: flex;
-      width: 60vw;
-      min-height: 30vh;
-      height: auto;
-      margin-top:5vw;
-
-      > div{
-        > .data{
-          display: flex;
-          justify-content: center;
-          align-items: center;
-        }
-      }
-    }
-  }
-
-  > .checkout{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    min-height: 70vh;
-    background-color: rgba(245, 245, 245, 0.58);
-    height: auto;
-    padding-top: 20vh;
+  > .t-para {
+    font-size: clamp(16px, 7vw, 60px);
+    padding:15px 0px 20px 10px;
+    font-weight: bold;
+    background-image: linear-gradient(to right,#463f64,#463f64, #4a4ae0, #2b2bd3);
+    -webkit-background-clip: text;
+    display: inline-block;
+    -webkit-text-fill-color: #00000000;
   }
 }
 
