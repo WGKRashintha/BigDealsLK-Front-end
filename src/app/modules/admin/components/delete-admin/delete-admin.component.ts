@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup} from "@angular/forms";
 import {AdminService} from "../../../../services/admin.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-delete-admin',
@@ -19,7 +20,7 @@ export class DeleteAdminComponent implements OnInit {
     nic:new FormControl(null)
   })
 
-  constructor(private adminService:AdminService , private snackBar:MatSnackBar) { }
+  constructor(private adminService:AdminService , private snackBar:MatSnackBar , private router:Router) { }
 
   ngOnInit(): void {
   }
@@ -47,5 +48,10 @@ export class DeleteAdminComponent implements OnInit {
       console.log(response);
       this.snackBar.open('Successfully deleted !' , 'Close' , {duration:7500});
     })
+  }
+
+  logout() {
+    localStorage.clear();
+    this.router.navigate(['admin'])
   }
 }

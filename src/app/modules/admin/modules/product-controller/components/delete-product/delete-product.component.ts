@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ProductService} from "../../../../../../services/product.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-delete-product',
@@ -26,7 +27,7 @@ export class DeleteProductComponent implements OnInit {
     price:new FormControl(null)
   })
 
-  constructor(private productService:ProductService , private snackBar:MatSnackBar) { }
+  constructor(private productService:ProductService , private snackBar:MatSnackBar , private router:Router) { }
 
   ngOnInit(): void {
   }
@@ -61,6 +62,11 @@ export class DeleteProductComponent implements OnInit {
       console.log(error);
       this.snackBar.open('Something went wrong !' , 'Close' , {duration:7500});
     })
+  }
+
+  logout() {
+    localStorage.clear();
+    this.router.navigate(['admin'])
   }
 }
 

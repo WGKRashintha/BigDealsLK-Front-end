@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ProductService} from "../../../../../../services/product.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-update-product',
@@ -26,7 +27,7 @@ export class UpdateProductComponent implements OnInit {
     price:new FormControl(null)
   })
 
-  constructor(private productService:ProductService , private snackBar:MatSnackBar) { }
+  constructor(private productService:ProductService , private snackBar:MatSnackBar , private router:Router) { }
 
   ngOnInit(): void {
   }
@@ -78,5 +79,10 @@ export class UpdateProductComponent implements OnInit {
       console.log(error);
       this.snackBar.open('Something went wrong !' , 'Close' , {duration:7500});
     })
+  }
+
+  logout() {
+    localStorage.clear();
+    this.router.navigate(['admin'])
   }
 }

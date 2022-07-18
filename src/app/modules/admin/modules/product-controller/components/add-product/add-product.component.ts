@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {ProductService} from "../../../../../../services/product.service";
 import {MatSnackBar} from "@angular/material/snack-bar";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-add-product',
@@ -27,7 +28,7 @@ export class AddProductComponent implements OnInit {
     price:new FormControl(null , [Validators.required])
   })
 
-  constructor(private productService:ProductService , private snackBar:MatSnackBar) {}
+  constructor(private productService:ProductService , private snackBar:MatSnackBar , private router:Router) {}
 
   ngOnInit(): void {
   }
@@ -69,5 +70,10 @@ export class AddProductComponent implements OnInit {
       console.log(error);
       this.snackBar.open('Something went wrong !' , 'Close' , {duration:7500});
     })
+  }
+
+  logout() {
+    localStorage.clear();
+    this.router.navigate(['admin'])
   }
 }

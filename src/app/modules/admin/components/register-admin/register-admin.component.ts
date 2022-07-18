@@ -43,4 +43,9 @@ export class RegisterAdminComponent implements OnInit {
       this.snackBar.open('Something went wrong' , 'Close' , {duration:7500});
     })
   }
+
+  logout() {
+    localStorage.clear();
+    this.router.navigate(['admin'])
+  }
 }
