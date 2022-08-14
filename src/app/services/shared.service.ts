@@ -54,12 +54,12 @@ export class SharedService {
     })
   }
 
-  get(email:string):Observable<any>{
-    return this.http.get(this.baseUrl + 'cart/get', {headers:{email:email}})
+  getAll(email:string):Observable<any>{
+    return this.http.get(this.baseUrl + 'cart/getAll', {headers:{email:email}})
   }
 
-  delete(url:string):Observable<any>{
-    return this.http.delete(this.baseUrl + 'cart/delete' , {headers:{url:url}})
+  delete(title:string):Observable<any>{
+    return this.http.delete(this.baseUrl + 'cart/delete' , {body:{title:title}})
   }
   deleteAll(email:string):Observable<any>{
     return this.http.delete(this.baseUrl + 'cart/deleteAll' , {headers:{email:email}})

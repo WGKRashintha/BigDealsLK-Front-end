@@ -10,17 +10,20 @@
 
     <div class="productData">
       <div class="products-inner">
-        <div style="height: 8vh; width: 35%">
-          <div class="data" style="border: 1px solid #808080; border-right:0px; height: 8vh" *ngFor="let tempUrl of urls"><img src="{{tempUrl}}" alt="" width="50px" height="50px" style="object-fit: contain; object-position: center"> </div>
+        <div style="height: 8vh; width: 45%">
+          <div class="data" style="border: 1px solid #afafaf; border-right:0px; height: 8vh" *ngFor="let tempUrl of urls"><img src="{{tempUrl}}" alt="" width="50px" height="50px" style="object-fit: contain; object-position: center"> </div>
         </div>
-        <div style="height: 8vh; width: 125%">
-          <div class="data" style="border: 1px solid #808080; border-left:0px; border-right:0px; height: 8vh; padding-top: 10px" *ngFor="let tempTitle of titles"> <p style="font-family: 'Roboto', sans-serif; font-weight: 500; font-size: 1rem;"> {{tempTitle}} </p> </div>
+        <div style="height: 8vh; width: 150%">
+          <div class="data" style="border: 1px solid #afafaf; border-left:0px; border-right:0px; height: 8vh; padding-top: 10px" *ngFor="let tempTitle of titles"> <p style="font-family: 'Roboto', sans-serif; font-weight: 500; font-size: 1rem;"> {{tempTitle}} </p> </div>
         </div>
-        <div style="height: 8vh; width: 70%">
-          <div class="data" style="border: 1px solid #808080; border-left:0px; border-right:0px; height: 8vh; padding-top: 10px" *ngFor="let tempColor of colors"> <p style="font-size: 0.9rem;"> {{tempColor}} </p> </div>
+        <div style="height: 8vh; width: 60%">
+          <div class="data" style="border: 1px solid #afafaf; border-left:0px; border-right:0px; height: 8vh; padding-top: 10px" *ngFor="let tempColor of colors"> <p style="font-size: 0.9rem;"> {{tempColor}} </p> </div>
         </div>
         <div style="height: 8vh; width: 50%">
-          <div class="data" style="border: 1px solid #808080; border-left:0px; height: 8vh; padding-top: 10px" *ngFor="let tempSize of sizes"> <p style="font-size: 0.9rem;"> {{tempSize}} </p> </div>
+          <div class="data" style="border: 1px solid #afafaf; border-left:0px; border-right:0px; height: 8vh; padding-top: 10px" *ngFor="let tempSize of sizes"> <p style="font-size: 0.9rem;"> {{tempSize}} </p> </div>
+        </div>
+        <div style="height: 8vh; width: 150px">
+          <div class="data" style="border: 1px solid #afafaf; border-left:0px; height: 8vh; padding-right: 10px" *ngFor="let tempButton of button , let indexes of index"> <button type="button" class="btn btn-danger" style="font-size: 0.75rem" (click)="remove(indexes)"> Remove </button> </div>
         </div>
       </div>
     </div>

@@ -14,6 +14,8 @@ export class CartComponent implements OnInit {
   colors:string[]=[];
   sizes:string[]=[];
   urls:string[]=[];
+  button:string[]=[];
+  index:string[]=[];
   price:number=0;
 
   constructor(private shared:SharedService , private productService:ProductService) { }
@@ -21,7 +23,7 @@ export class CartComponent implements OnInit {
   ngOnInit(): void {
     this.email=<string>localStorage.getItem('email');
     console.log(this.email);
-    this.shared.get(this.email).subscribe(response=>{
+    this.shared.getAll(this.email).subscribe(response=>{
 
       for (let i=0; i<response.message.length; i++){
         this.titles.push(response.message[i].title)
@@ -42,7 +44,14 @@ export class CartComponent implements OnInit {
       for (let i=0; i<response.message.length; i++){
         this.price+=<number>response.message[i].price
       }
-      console.log(this.price)
+
+      for (let i=0; i<response.message.length; i++){
+        // @ts-ignore
+        this.button.push(null);
+        this.index.push(JSON.stringify(this.index.length+1));
+      }
+      console.log(this.price);
+      console.log(this.button.length);
 
     })
   }
@@ -51,6 +60,16 @@ export class CartComponent implements OnInit {
   checkout() {
     this.shared.deleteAll(<string>localStorage.getItem('email')).subscribe(response=>{
       console.log(response);
+    }, error => {
+      console.log(error);
+    })
+  }
+
+  remove(index: string) {
+    console.log((Number.parseInt(index)-1));
+    this.shared.delete(this.titles[(Number.parseInt(index)-1)]).subscribe(result=>{
+      console.log(result);
+      window.location.reload();
     }, error => {
       console.log(error);
     })
